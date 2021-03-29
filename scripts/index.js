@@ -47,25 +47,25 @@ Ball.prototype.draw = function () {
 /**
  * Atualizando os dados da bola.
  */
- Ball.prototype.update = function() {
-  if ((this.posX + this.size) >= width) {
-    this.velocityX = -(this.velocityX);
+Ball.prototype.update = function () {
+  if (this.posX + this.size >= width) {
+    this.velocityX = -this.velocityX
   }
 
-  if ((this.posX - this.size) <= 0) {
-    this.velocityX = -(this.velocityX);
+  if (this.posX - this.size <= 0) {
+    this.velocityX = -this.velocityX
   }
 
-  if ((this.posY + this.size) >= height) {
-    this.velocityY = -(this.velocityY);
+  if (this.posY + this.size >= height) {
+    this.velocityY = -this.velocityY
   }
 
-  if ((this.posY - this.size) <= 0) {
-    this.velocityY = -(this.velocityY);
+  if (this.posY - this.size <= 0) {
+    this.velocityY = -this.velocityY
   }
 
-  this.posX += this.velocityX;
-  this.posY += this.velocityY;
+  this.posX += this.velocityX
+  this.posY += this.velocityY
 }
 
 /**
@@ -79,21 +79,10 @@ Ball.prototype.collisionDetect = function () {
       const distance = Math.sqrt(dx * dx + dy * dy)
 
       if (distance < this.size + balls[j].size) {
-          balls[j].posX = (balls[j].posX * 1) * -1
-          balls[j].posY = (balls[j].posY * 1) * -1
-          this.posX = (this.posX * 1) * -1
-          this.posY = (this.posY * 1) * -1
-
-          // Mudar cor da bola.        
-//        balls[j].color = this.color =
-//          'rgb(' +
-//          randomize(0, 255) +
-//          ',' +
-//          randomize(0, 255) +
-//          ',' +
-//          randomize(0, 255) +
-//          ')'
-
+        balls[j].posX = balls[j].posX * 1 * -1
+        balls[j].posY = balls[j].posY * 1 * -1
+        this.posX = this.posX * 1 * -1
+        this.posY = this.posY * 1 * -1
       }
     }
   }
@@ -139,18 +128,18 @@ function newBall() {
   if (balls.length <= maxBalls) {
     let size = randomize(7, 25)
     let ball = new Ball(
-      randomize(0 + size, width - size), // posX
-      randomize(0 + size, height - size), // posY
-      randomize(1, 10), // velocityX
-      randomize(1, 10), // velocityY
-      'rgb(' + // color
+      randomize(0 + size, width - size),
+      randomize(0 + size, height - size),
+      randomize(1, 10),
+      randomize(1, 10),
+      'rgb(' +
         randomize(0, 255) +
         ',' +
         randomize(0, 255) +
         ',' +
         randomize(0, 255) +
         ')',
-      size //size
+      size
     )
     balls.push(ball)
   }
